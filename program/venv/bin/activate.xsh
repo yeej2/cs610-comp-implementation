@@ -25,7 +25,7 @@ def _deactivate(args):
 _deactivate(["nondestructive"])
 aliases["deactivate"] = _deactivate
 
-$VIRTUAL_ENV = r"/home/y/yeej2/COMP/program/venv"
+$VIRTUAL_ENV = r"/home/y/yeej2/COMP/cs610-comp-implementation/program/venv"
 
 $_OLD_VIRTUAL_PATH = $PATH
 $PATH = $PATH[:]
