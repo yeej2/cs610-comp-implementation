@@ -61,11 +61,32 @@ def create_topic():
 	return render_template('/teachers/topics.html', classes=get_teacher_class())
 
 ## individual topic page
-@app.route('/teachers/topics/<topic_id>/')
+# @app.route('/teachers/topics/<topic_id>/')
+# @validate_teacher
+# def topic_page(topic_id=None):
+# 	topic_data = query_db("select name from topics where id=?", [topic_id], one=True)
+# 	return render_template('/teachers/topic_page.html', assignments=get_topic_assign(topic_id), topic_name=str(topic_data[0]), quizzes=get_topic_quiz(topic_id))
+
+######################################
+
+# @app.route('/teachers/objectives/')
+# @validate_teacher
+# def teacher_objectives_home():
+# 	return render_template('/teachers/objectives.html', classes=get_teacher_assign())
+
+@app.route('/teachers/objectives/<topic_id>/')
 @validate_teacher
 def topic_page(topic_id=None):
 	topic_data = query_db("select name from topics where id=?", [topic_id], one=True)
 	return render_template('/teachers/topic_page.html', assignments=get_topic_assign(topic_id), topic_name=str(topic_data[0]), quizzes=get_topic_quiz(topic_id))
+
+
+@app.route('/teachers/feedback/')
+@validate_teacher
+def teacher_feedback_home():
+	return render_template('/teachers/feedback.html', classes=get_teacher_assign())
+
+#################################
 
 ## main assignments page
 @app.route('/teachers/assignments/')

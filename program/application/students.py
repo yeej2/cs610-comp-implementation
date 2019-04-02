@@ -28,10 +28,20 @@ def student_class_page(class_id):
 	class_name = query_db("SELECT name FROM classes WHERE id=?;", [class_id], one=True)
 	return render_template('/students/class_page.html', class_name=str(class_name[0]), topics=get_class_topic(class_id), assignments=get_class_assign(class_id), quizzes=get_class_quiz(class_id), grades=get_student_grade(class_id))
 
+###############
+
+
 @app.route('/students/objectives/')
 @validate_student
 def student_objectives_home():
 	return render_template('/students/objectives.html', classes=get_student_classes())
+
+@app.route('/students/feedback/')
+@validate_student
+def student_feedback_home():
+	return render_template('/students/feedback.html', classes=get_student_classes())
+
+#################
 
 @app.route('/students/topics/<topic_id>/')
 @validate_student
