@@ -47,13 +47,13 @@ def class_page(class_id=None):
 	return render_template('/teachers/class_page.html', class_id=class_id, class_name=class_name, topics=get_class_topic(class_id), assignments=get_class_assign(class_id), students=get_students_class(class_id), grades=get_class_grades(class_id))
 
 ## the main topics page for a teacher
-@app.route('/teachers/topics/')
+@app.route('/teachers/objectives/')
 @validate_teacher
 def topics_page():
 	return render_template('/teachers/topics.html', classes=get_teacher_class(), topics=get_teacher_topic_all())
 
 ## create a topic
-@app.route('/teachers/topics/create/', methods=['POST'])
+@app.route('/teachers/objectives/create/', methods=['POST'])
 @validate_teacher
 def create_topic():
 	insert_db("insert into topics (name, class_id) values (?, ?);", [request.form['name'], request.form['class']])
