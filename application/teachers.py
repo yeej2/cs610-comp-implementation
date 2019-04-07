@@ -50,7 +50,7 @@ def class_page(class_id=None):
 @app.route('/teachers/objectives/')
 @validate_teacher
 def topics_page():
-	return render_template('/teachers/topics.html', classes=get_teacher_class(), topics=get_teacher_topic_all())
+	return render_template('/teachers/objectives.html', classes=get_teacher_class(), topics=get_teacher_topic_all())
 
 ## create a topic
 @app.route('/teachers/objectives/create/', methods=['POST'])
@@ -58,7 +58,7 @@ def topics_page():
 def create_topic():
 	insert_db("insert into topics (name, class_id) values (?, ?);", [request.form['name'], request.form['class']])
 	flash("Your class was created.")
-	return render_template('/teachers/topics.html', classes=get_teacher_class())
+	return render_template('/teachers/objectives.html', classes=get_teacher_class())
 
 ## individual topic page
 # @app.route('/teachers/topics/<topic_id>/')
