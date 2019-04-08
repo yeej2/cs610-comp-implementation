@@ -1,5 +1,5 @@
 {% extends "/teachers/base_template.html" %}
-	{% block title %}Your Topics{% endblock %}
+	{% block title %}Feedback Given{% endblock %}
 	{% block body %}
 		<style>
 			ul {
@@ -13,34 +13,34 @@
 		<div class="container">
 			<div class="row">
 				<div class="span12">
-					<h1>Objective Home</h1>
+					<h1>Feedback Home</h1>
 				</div>
 			</div>
 			<div class="row">
 				<div class="span6">
-					<h2>Your Objectives</h2>
+					<h2>Your Feedback</h2>
 					<ul>
-						{% for topic in topics %}
+						{% for assignment in assignments %}
 							<li>
-								<a href="/teachers/objectives/{{topic.id}}/">{{topic.name}}<br/>
-								<span>Class: {{topic.class}}</span>
+								<a href="/teachers/feedback/{{teach_feedback.id}}/">{{teach_feedback.get_feedback}}<br/>
 								</a>
 							</li>
 						{% endfor %}
 					</ul>
 				</div>
 				<div class="span6">
-					<h2>Create an Objective</h2>
-					<form class="form-horizontal well" method="POST" action="/teachers/objectives/create/">
+					<h2>Give Feedback</h2>
+					<form class="form-horizontal well" method="POST" action="/teachers/feedback/create/">
 						<fieldset>
-							<div><span>Objective Name: </span><input type="text" name="name" required /></div>
-							<div><span>Class: </span>
-								<select name="class" required>
-									{% for class in classes %}
-										<option value="{{class.id}}">{{class.name}}</option>
+							<div><span>Topic: </span>
+								<select name="topic" required>
+									{% for topic in topics %}
+										<option value="{{topic.id}}">{{topic.name}}</option>
 									{% endfor %}
 								</select>
 							</div>
+							<div><span>Description: </span><br/><textarea name="description" rows="4" cols="30"
+								placeholder="Information about the assignment." required></textarea></div>
 							<div><input type="submit" class="btn btn-primary"></div>
 							{% with messages = get_flashed_messages() %}
 								{% if messages %}

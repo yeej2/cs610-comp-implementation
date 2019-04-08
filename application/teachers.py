@@ -83,12 +83,12 @@ def topic_page(topic_id=None):
 @app.route('/teachers/feedback/')
 @validate_teacher
 def teacher_feedback_home():
-	return render_template('/feedback.html', classes=get_feedback())
+	return render_template('/teachers/feedback.html', classes=get_feedback())
 
 @app.route('/teachers/feedback/create', methods=['POST'])
 @validate_teacher
 def create_feedback():
-	insert_db("insert into feedback (feedback, topic_id) values (?, ?);", [request.form['feedback'], request.form['topic']])
+	insert_db("insert into teach_feedback (get_feedback, topic_id) values (?, ?);", [request.form['feedback'], request.form['topic']])
 	flash("Feedback given!")
 	return redirect('/teachers/feedback/', classes=get_feedback())
 

@@ -86,14 +86,6 @@ def get_student_grade(class_id):
 		grades.append(student_grade_assignment)
 	return grades
 
-# def get_student_feedback(class_id):
-# 	feedback = query_db("SELECT assignments.name, grade FROM assignment_grades JOIN assignments ON assignment_grades.assignment_id=assignments.id JOIN topics on assignments.topic_id=topics.id JOIN classes ON topics.class_id=classes.id WHERE student_id=? AND topics.class_id=?;", [session['id'], class_id])
-# 	for grade in assignment_grade:
-# 		student_grade_assignment = {}
-# 		student_grade_assignment['thing_name'] = grade[0]
-# 		student_grade_assignment['grade'] = grade[1]
-# 		grades.append(student_grade_assignment)
-# 	return grades
 
 #################
 ###TEACHER FUNCS
@@ -128,7 +120,14 @@ def get_teacher_class():
 	return classes
 
 def get_feedback():
-    
+    feedback_data = query_db("select topics.class_id, teach_feedback.get_feedback from teach_feedback join topics on teach_feedback.topic_id=topics.id join classes on topics.class_id=classes.id where teacher_id=?;", [session['id']])
+    feedback = []
+    for feedback in feedback_data:
+        feedback_dict_teach = {}
+        feedback_dict_teach['id'] = feedback[0]
+        feedback_dict_teach['feedback'] = feedback[1]
+        feedback.append(feedback_dict_teach)
+    return feedback
 
 def get_teacher_topic_all():
 	"""
