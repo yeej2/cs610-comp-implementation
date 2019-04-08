@@ -1,5 +1,5 @@
 {% extends "/teachers/base_template.html" %}
-	{% block title %}Topic: {{topic_name}}{% endblock %}
+	{% block title %}Objective: {{topic_name}}{% endblock %}
 	{% block body %}
 		<style>
 			ul {
@@ -10,12 +10,23 @@
 		<div class="container">
 			<div class="row">
 				<div class="span12">
-					<h1>Topic: {{topic_name}}</h1>
+					<h1>Objective: {{topic_name}}</h1>
 				</div>
 			</div>
 			<div class="row">
-				<div class="span6"><span>Description of Objective: </span><br/><textarea name="description" rows="4" cols="100"
+				<div class="span6"><span>Description of Objective: </span><br/><textarea name="description" rows="6" cols="100"
 					placeholder="Information about the assignment." required></textarea></div>
+					<form class="objective_measure" method="POST" action="/teachers/assignments/create/">
+						<h4> Assignments </h4>
+  					<input type="checkbox" name="objectives" value="assignment_1">
+  					<input type="checkbox" name="objectives" value="assignment_2">
+					 	<input type="checkbox" name="objectives" value="assignment_3">
+						<input type="checkbox" name="objectives" value="assignment_4"> <br> <br>
+						<h4> Quizzes </h4>
+						<input type="checkbox" name="objectives" value="quiz_1">
+						<input type="checkbox" name="objectives" value="quiz_4"> <br> <br>
+  					<input type="submit" value="Submit">
+					</form>
 				<div class="span6">
 					<h2>Assignments</h2>
 					<ul>

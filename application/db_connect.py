@@ -23,9 +23,9 @@ def close_connection(exception):
 
 #query the DATABASE
 def query_db(query, args=(), one=False):
-    cur = get_db().execute(query, args)
-    returnval = cur.fetchall()
-    cur.close()
+    cursor = get_db().execute(query, args)
+    returnval = cursor.fetchall()
+    cursor.close()
     return (returnval[0] if returnval else None) if one else returnval
 
 #insert a value into the DATABASE

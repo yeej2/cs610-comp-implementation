@@ -33,7 +33,7 @@
 					<form class="form-horizontal well" method="POST" action="/teachers/assignments/create/">
 						<fieldset>
 							<div><span>Assignment Name: </span><input type="text" name="name"  required/></div>
-							<div><span>Topic: </span>
+							<div><span>Objeective: </span>
 								<select name="topic" required>
 									{% for topic in topics %}
 										<option value="{{topic.id}}">{{topic.name}}</option>

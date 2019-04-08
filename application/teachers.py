@@ -57,7 +57,7 @@ def topics_page():
 @validate_teacher
 def create_topic():
 	insert_db("insert into topics (name, class_id) values (?, ?);", [request.form['name'], request.form['class']])
-	flash("Your class was created.")
+	flash("Your Objective was created.")
 	return render_template('/teachers/objectives.html', classes=get_teacher_class())
 
 ## individual topic page
