@@ -1,5 +1,10 @@
 from application import app
-from flask import render_template, session, redirect, request, flash, escape
+from flask import render_template
+from flask import session
+from flask import redirect
+from flask import request
+from flask import flash
+from flask import escape
 from functools import wraps
 from .db_connect import *
 
@@ -7,7 +12,8 @@ from .db_connect import *
 @validate_student
 def student_home():
 	return render_template('/students/index.html', classes=get_student_classes())
-
+	rv = "You were logged in"
+	return rv
 @app.route('/students/classes/')
 @validate_student
 def student_classes_home():

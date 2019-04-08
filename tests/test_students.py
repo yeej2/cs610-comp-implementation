@@ -1,16 +1,15 @@
+import sys, os
+myPath = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, myPath + '/../')
+
 from application import students
 
-def test_login_logout(client):
-    """Make sure login and logout works."""
-
-    rv = login(client, flaskr.app.config['USERNAME'], flaskr.app.config['PASSWORD'])
+def test_login_logout():
+    rv = login.login('stu', 'pass')
     assert b'You were logged in' in rv.data
-
-    rv = logout(client)
-    assert b'You were logged out' in rv.data
-
-    rv = login(client, flaskr.app.config['USERNAME'] + 'x', flaskr.app.config['PASSWORD'])
-    assert b'Invalid username' in rv.data
-
-    rv = login(client, flaskr.app.config['USERNAME'], flaskr.app.config['PASSWORD'] + 'x')
-    assert b'Invalid password' in rv.data
+    # rv = self.logout()
+    # assert b'You were logged out' in rv.data
+    # rv = self.login('adminx', 'default')
+    # assert b'Invalid username' in rv.data
+    # rv = self.login('admin', 'defaultx')
+    # assert b'Invalid password' in rv.data
