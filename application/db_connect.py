@@ -127,6 +127,9 @@ def get_teacher_class():
 		classes.append(class_dict)
 	return classes
 
+def get_feedback():
+    
+
 def get_teacher_topic_all():
 	"""
 	Gets the topics that a teacher has
